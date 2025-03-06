@@ -1,0 +1,87 @@
+<style>
+/* Styling for the counter container */
+.counter-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 2px solid #003366; /* Matches the dark blue theme */
+    border-radius: 0px;
+    background-color: #f9f9f9; /* Light, professional background */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Georgia', serif; /* Reflects the elegant feel of the site */
+}
+
+/* Title styling */
+.counter-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #003366; /* Dark blue for headlines */
+    margin-bottom: 10px;
+}
+
+/* Subtitle styling */
+.counter-subtitle {
+    font-size: 16px;
+    color: #666; /* Neutral gray tone for subtlety */
+    margin-bottom: 20px;
+}
+
+/* Counter number styling */
+.counter-value {
+    font-size: 36px;
+    font-weight: bold;
+    color: #800000; /* Maroon tone for emphasis */
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation for the counter number */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .counter-container {
+        padding: 20px;
+    }
+    .counter-title {
+        font-size: 20px;
+    }
+    .counter-value {
+        font-size: 30px;
+    }
+}
+</style>
+
+<div class="counter-container">
+    <div class="counter-title">Wealth Flowing into Florida</div>
+    <div class="counter-subtitle">This is how much money has flowed into Florida since you arrived on this page.</div>
+    <div id="wealth-counter" class="counter-value">$0</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const wealthPerSecond = 1111; // USD gained per second
+    const counterElement = document.getElementById("wealth-counter");
+    const startTime = Date.now();
+
+    function updateCounter() {
+        const elapsedSeconds = (Date.now() - startTime) / 1000;
+        const wealthGained = Math.floor(wealthPerSecond * elapsedSeconds).toLocaleString();
+        counterElement.textContent = `$${wealthGained}`;
+    }
+
+    // Update counter every 100ms
+    setInterval(updateCounter, 100);
+});
+</script>
